@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/product-generator")
+@RequestMapping("/generator")
 public class ProductGeneratorController {
 
     private final ChatClient chatClient;
@@ -18,9 +18,16 @@ public class ProductGeneratorController {
     @GetMapping
     public String productGenerator() {
         var clientRequest = "Genera 5 productos ecológicos.";
-        return this.chatClient.prompt()
-                .user(clientRequest)
-                .call()
-                .content();    }
+        try {
+            return this.chatClient.prompt()
+                    .user(clientRequest)
+                    .call()
+                    .content();
+        } catch (Exception e) {
+            // Manejo de excepciones: se captura la excepción y se retorna un mensaje de error.
+            return "Error al generar productos: " + e.getMessage();
+        }
+    }
+
 
 }
