@@ -118,3 +118,32 @@ necesidades de tu aplicación, ya sea técnica, creativa o conversacional.
 
 Experimenta con diferentes combinaciones de parámetros para descubrir qué configuraciones funcionan mejor
 para tu caso específico.
+
+--------------------------
+
+PROMPT ENGINEERING:
+
+El prompt engineering es un conjunto de técnicas y estrategias utilizadas para optimizar la interacción 
+con modelos de lenguaje, como el GPT-4o de OpenAI.
+
+Al construir prompts efectivos, puedes dirigir el comportamiento del modelo y obtener respuestas más
+relevantes y precisas. A continuación, se enumeran algunas buenas prácticas de prompt engineering:
+
+Escribe instrucciones claras y directas: Cuanto más objetivas sean las instrucciones, más preciso será el 
+resultado. Evita la ambigüedad y proporciona ejemplos explícitos si es necesario.
+Haz preguntas directas: Formula preguntas de manera directa para obtener respuestas directas. Por ejemplo,
+en lugar de preguntar "¿Qué piensas sobre el clima?", pregunta "¿Cuál es el pronóstico del tiempo para mañana 
+en Maceió?".
+Proporciona contexto: Incluir contexto adicional en el prompt puede ayudar al modelo a entender mejor la 
+pregunta y ofrecer una respuesta más precisa. Por ejemplo, "Explica la teoría de la relatividad como si yo 
+fuera un estudiante de secundaria".
+Usa formato estructural: Utilizar listas, títulos y secciones puede ayudar a guiar al modelo en la 
+estructuración de la respuesta. Por ejemplo, "Enumera tres beneficios del ejercicio físico".
+Define el estilo de la respuesta: Indica el tono y estilo que deseas en la respuesta. Por ejemplo,
+"Responde de manera profesional y concisa:" o "Escribe una historia infantil divertida sobre un dragón".
+Ejemplos y demostraciones: Incluye ejemplos de respuestas deseadas para guiar al modelo. Por ejemplo, 
+"Aquí tienes algunos ejemplos de cómo responder preguntas sobre tecnología:" seguido de ejemplos. 
+También puedes mostrar ejemplos de respuestas inadecuadas para ayudar al modelo a entender qué evitar.
+Uso de restricciones y limitaciones: Define claramente los límites de la respuesta esperada. Por ejemplo, 
+"Proporciona una respuesta con un máximo de 50 palabras". Si la respuesta debe limitarse a un determinado
+alcance, especificarlo. Por ejemplo, "Explica solo los beneficios ambientales del uso de energía solar".
