@@ -1,7 +1,10 @@
 package com.aluracursos.ecomart.controller;
 
+import com.knuddels.jtokkit.Encodings;
+import com.knuddels.jtokkit.api.ModelType;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductCategorizerController {
 
     private final ChatClient chatClient;
-
-    public ProductCategorizerController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+    public ProductCategorizerController(@Qualifier("gpt-4o-mini") ChatClient chatClient) {
+        this.chatClient = chatClient;
     }
 
     @GetMapping
@@ -34,11 +36,16 @@ public class ProductCategorizerController {
                 Producto: Pelota de fútbol
                 Respuesta: Deportes
                 """;
+
+        var tokens = tokenCounter(systemMessage, product);
+        System.out.println("Total de Tokens: " + tokens);
+
         try {
             return this.chatClient.prompt()
                     .system(systemMessage)
                     .user(product)
                     .options(ChatOptionsBuilder.builder()
+                            .withModel("gpt-4o-mini")
                             .withTemperature(0.85)
                             .build())
                     .call()
@@ -47,7 +54,12 @@ public class ProductCategorizerController {
             // Manejo de excepciones: se captura la excepción y se retorna un mensaje de error.
             return "Error al categorizar el producto: " + e.getMessage();
         }
+
     }
 
-
+    public int tokenCounter(String system, String user) {
+        var registry = Encodings.newDefaultEncodingRegistry();
+        var enc = registry.getEncodingForModel(ModelType.GPT_4O_MINI);
+        return enc.countTokens(system + user);
+    }
 }
