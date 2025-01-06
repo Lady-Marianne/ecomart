@@ -3,6 +3,7 @@ package com.aluracursos.ecomart.controller;
 import com.knuddels.jtokkit.Encodings;
 import com.knuddels.jtokkit.api.ModelType;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +49,7 @@ public class ProductCategorizerController {
                             .withModel("gpt-4o-mini")
                             .withTemperature(0.85)
                             .build())
+                    .advisors(new SimpleLoggerAdvisor())
                     .call()
                     .content();
         } catch (Exception e) {

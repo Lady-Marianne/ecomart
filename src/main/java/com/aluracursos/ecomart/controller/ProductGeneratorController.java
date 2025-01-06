@@ -1,6 +1,7 @@
 package com.aluracursos.ecomart.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class ProductGeneratorController {
             var pregunta = "Generá 5 productos ecológicos.";
             return this.chatClient.prompt()
                     .user(pregunta)
+                    .advisors(new SimpleLoggerAdvisor())
                     .call()
                     .content();
         } catch (Exception e) {
